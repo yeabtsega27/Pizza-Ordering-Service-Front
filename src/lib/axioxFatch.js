@@ -2,8 +2,8 @@ import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 
-const baseURL = "http://localhost:4000/api/v1/";
-// const baseURL = "https://pizza-ordering-service-back.onrender.com/api/v1/";
+// const baseURL = "http://localhost:4000/api/v1/";
+const baseURL = "https://pizza-ordering-service-back.onrender.com/api/v1/";
 
 // Create an instance of Axios
 
