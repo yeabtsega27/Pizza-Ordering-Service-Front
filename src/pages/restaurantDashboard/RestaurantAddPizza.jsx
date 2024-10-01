@@ -54,8 +54,8 @@ export default function RestaurantAddPizza() {
       const res = await instance.get(`pizza/${pizzaId}`);
       setPizza(res.data.pizza); // Set fetched permissions to state
     };
-    fetchPizza();
-  }, [pizzaId]);
+    if (!isAdd) fetchPizza();
+  }, [pizzaId, isAdd]);
   const {
     register,
     handleSubmit,
