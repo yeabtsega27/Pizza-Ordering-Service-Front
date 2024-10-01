@@ -124,10 +124,7 @@ export default function RestaurantAddPizza() {
         // Append the image file
         formData.append("image", data.image[0]);
 
-        // Append selectedToppings and newAddedToppings arrays
-        selectedToppings.forEach((topping) => {
-          formData.append("selectedToppings", topping);
-        });
+        formData.append("selectedToppings", JSON.stringify(selectedToppings));
 
         formData.append("addedToppings", JSON.stringify(newAddedToppings));
 

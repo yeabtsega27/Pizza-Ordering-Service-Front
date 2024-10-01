@@ -14,14 +14,16 @@ import { useForm } from "react-hook-form";
 import { roleSchema } from "../Schema";
 import { useEffect, useState } from "react";
 import { instance } from "../../../lib/axioxFatch";
+import UseToast from "../../../hooks/UseToast";
 
 export default function AddAndEditRole({ data, setShow, add = true, setData }) {
   const [permissions, setPermissions] = useState([]);
   const [selectedPermissions, setSelectedPermissions] = useState([]);
   const [initialPermissions, setInitialPermissions] = useState([]);
+  const { error } = UseToast();
   useEffect(() => {
     const fetchPermissions = async () => {
-      const res = await instance.get("permission");
+      const res = await instance.get("per");
       setPermissions(res.data); // Set fetched permissions to state
     };
 
@@ -81,6 +83,9 @@ export default function AddAndEditRole({ data, setShow, add = true, setData }) {
         }
       } catch (e) {
         console.error(e);
+        if (e.response.data.errors)
+          error("you need to feel all the the inputs")();
+        error(e.response.data.msg)();
       }
     } else {
       try {
@@ -97,6 +102,9 @@ export default function AddAndEditRole({ data, setShow, add = true, setData }) {
         }
       } catch (e) {
         console.error(e);
+        if (e.response.data.errors)
+          error("you need to feel all the the inputs")();
+        error(e.response.data.msg)();
       }
     }
   };

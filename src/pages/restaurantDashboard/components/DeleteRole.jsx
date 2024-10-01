@@ -2,8 +2,10 @@ import { Box, Button, IconButton, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import HighlightOffSharpIcon from "@mui/icons-material/HighlightOffSharp";
 import { instance } from "../../../lib/axioxFatch";
+import UseToast from "../../../hooks/UseToast";
 
 export default function DeleteRole({ setShow, role, setData }) {
+  const { error } = UseToast();
   const onsubmit = async () => {
     try {
       const res = await instance.delete(`roles/${role.id}`);
@@ -14,6 +16,9 @@ export default function DeleteRole({ setShow, role, setData }) {
       }
     } catch (e) {
       console.error(e);
+      if (e.response.data.errors)
+        error("you need to feel all the the inputs")();
+      error(e.response.data.msg)();
     }
     setShow(false);
   };

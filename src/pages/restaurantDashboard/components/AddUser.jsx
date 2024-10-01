@@ -14,10 +14,12 @@ import { useForm } from "react-hook-form";
 import { addUserSchema } from "../Schema";
 import { useEffect, useState } from "react";
 import { instance } from "../../../lib/axioxFatch";
+import UseToast from "../../../hooks/UseToast";
 
 export default function AddUser({ setShow, setData }) {
   const [roles, setRoles] = useState([]);
   const [selectedRole, setSelectedRole] = useState(0);
+  const { error } = UseToast();
   useEffect(() => {
     const fetchPermissions = async () => {
       const res = await instance.get("roles/restaurant");
@@ -50,6 +52,9 @@ export default function AddUser({ setShow, setData }) {
       }
     } catch (e) {
       console.error(e);
+      if (e.response.data.errors)
+        error("you need to feel all the the inputs")();
+      error(e.response.data.msg)();
     }
   };
   const handleStatusChange = async (newStatus) => {

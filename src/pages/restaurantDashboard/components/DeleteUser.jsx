@@ -16,7 +16,9 @@ export default function DeleteUser({ setShow, data, setData }) {
         });
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
+      if (e.response.data.errors)
+        error("you need to feel all the the inputs")();
       error(e.response.data.msg)();
     }
     setShow(false);

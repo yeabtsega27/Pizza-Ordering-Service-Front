@@ -4,18 +4,23 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { instance } from "../../lib/axioxFatch";
 import { useNavigate } from "react-router-dom";
+import UseToast from "../../hooks/UseToast";
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState([]);
   const { Auth } = useAuth();
   const navigate = useNavigate();
+  const { error } = UseToast();
   useEffect(() => {
     const FeachMyOrders = async () => {
       try {
         const res = await instance.get("orders/myorder");
         setOrders(res.data.orders);
       } catch (e) {
-        console.log(e);
+        console.error(e);
+        if (e.response.data.errors)
+          error("you need to feel all the the inputs")();
+        error(e.response.data.msg)();
       }
     };
 

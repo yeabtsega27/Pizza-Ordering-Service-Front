@@ -51,8 +51,9 @@ export default function RegistrationRestaurantPage() {
       }
       console.log(res);
     } catch (e) {
-      console.log(e.response);
-
+      console.error(e);
+      if (e.response.data.errors)
+        error("you need to feel all the the inputs")();
       error(e.response.data.msg)();
     }
   };

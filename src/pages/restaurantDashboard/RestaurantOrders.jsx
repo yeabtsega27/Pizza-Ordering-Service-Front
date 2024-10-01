@@ -56,9 +56,10 @@ export default function RestaurantOrders() {
         }
       }
     } catch (e) {
-      console.log(e);
-
-      error(e.respons.data.msg)();
+      console.error(e);
+      if (e.response.data.errors)
+        error("you need to feel all the the inputs")();
+      error(e.response.data.msg)();
     }
   };
 
