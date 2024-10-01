@@ -233,6 +233,19 @@ export default function RegistrationPage() {
                 </Link>
               </Typography>
             </Box>
+            <Box
+              sx={{
+                width: "100%", // Full width
+                display: "flex", // Flexbox
+                justifyContent: "center", // Center horizontally
+                alignItems: "center", // Center vertically
+              }}
+            >
+              <Typography>
+                {"Create restaurant account "}
+                <Link to="/registerrestaurant">{"Register"}</Link>
+              </Typography>
+            </Box>
           </Box>
         </Box>
       </Box>

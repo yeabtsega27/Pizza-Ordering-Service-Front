@@ -13,7 +13,6 @@ export default function HomePage() {
   const [restaurant, setRestaurant] = useState([]);
   const [popularPizzas, setPopularPizzas] = useState([]);
   const [fasting, setFasting] = useState([]);
-  console.log(restaurant);
 
   useEffect(() => {
     const fetchRestaurants = async () => {

@@ -1,6 +1,6 @@
 import RestaurantOutlinedIcon from "@mui/icons-material/RestaurantOutlined";
-import { Box, Link, Typography } from "@mui/material";
-import { useLocation } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
+import { Link, useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
@@ -327,7 +327,7 @@ export default function DropDownMenu() {
                       fontSize={26}
                       fontWeight="bold"
                     >
-                      Restorant
+                      Restaurant
                     </Typography>
                   </Box>
                 </Link>
@@ -336,34 +336,61 @@ export default function DropDownMenu() {
           </>
         ) : (
           <>
-            <Link
-              // type="submit"
-              to="/register"
-              sx={{
-                textDecoration: "none",
-                justifyContent: "center",
-                alignItems: "center",
-                bgcolor: "#FF890F",
-                borderRadius: 2,
-                cursor: "pointer",
-                display: {
-                  xs: "flex",
-                },
-                py: 2,
-                "&:hover": {
-                  bgcolor: "#e6891d",
-                },
-              }}
-            >
-              <Typography
-                color="#ffffff"
-                fontWeight={"bold"}
+            <Link to="/register">
+              <Box
                 sx={{
-                  fontSize: "18px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  bgcolor: "#FF890F",
+                  borderRadius: 2,
+                  display: {
+                    xs: "flex",
+                  },
+                  m: 1,
+                  py: 2,
+                  "&:hover": {
+                    bgcolor: "#e6891d",
+                  },
                 }}
               >
-                Register
-              </Typography>
+                <Typography
+                  color="#ffffff"
+                  fontWeight={"bold"}
+                  sx={{
+                    fontSize: "18px",
+                  }}
+                >
+                  Register
+                </Typography>
+              </Box>
+            </Link>
+            <Link to="/login">
+              <Box
+                sx={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  bgcolor: "#FF890F",
+                  borderRadius: 2,
+                  display: {
+                    xs: "flex",
+                  },
+                  m: 1,
+                  py: 2,
+                  "&:hover": {
+                    bgcolor: "#e6891d",
+                  },
+                }}
+              >
+                <Typography
+                  color="#ffffff"
+                  fontWeight={"bold"}
+                  sx={{
+                    fontSize: "18px",
+                  }}
+                >
+                  Login
+                </Typography>
+              </Box>
             </Link>
           </>
         )}

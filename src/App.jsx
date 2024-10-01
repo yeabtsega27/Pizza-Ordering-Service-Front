@@ -15,7 +15,7 @@ import RestaurantAddPizza from "./pages/restaurantDashboard/RestaurantAddPizza";
 import useAuth from "./hooks/useAuth";
 
 function App() {
-  const { Auth } = useAuth();
+  const { Auth, abilities } = useAuth();
   return (
     <>
       <Routes>
@@ -49,15 +49,27 @@ function App() {
                 }
               /> */}
               <Route index element={<RestaurantOrders />} />
-              <Route path="order" element={<RestaurantOrders />} />
-              <Route path="roles" element={<RestaurantRoles />} />
-              <Route path="users" element={<RestaurantUsers />} />
-              <Route path="pizza-menu" element={<RestaurantPizzaMenu />} />
-              <Route path="pizza-menu/add" element={<RestaurantAddPizza />} />
-              <Route
-                path="pizza-menu/edite/:pizzaId"
-                element={<RestaurantAddPizza />}
-              />
+              {abilities.can("read", "Orders") && (
+                <Route path="order" element={<RestaurantOrders />} />
+              )}
+              {abilities.can("read", "Roles") && (
+                <Route path="roles" element={<RestaurantRoles />} />
+              )}
+              {abilities.can("read", "restaurant_manager") && (
+                <Route path="users" element={<RestaurantUsers />} />
+              )}
+              {abilities.can("read", "Pizza") && (
+                <Route path="pizza-menu" element={<RestaurantPizzaMenu />} />
+              )}
+              {abilities.can("create", "Pizza") && (
+                <Route path="pizza-menu/add" element={<RestaurantAddPizza />} />
+              )}
+              {abilities.can("edite", "Pizza") && (
+                <Route
+                  path="pizza-menu/edite/:pizzaId"
+                  element={<RestaurantAddPizza />}
+                />
+              )}
             </Route>
           </>
         )}

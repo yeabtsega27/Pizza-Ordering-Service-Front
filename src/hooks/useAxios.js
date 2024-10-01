@@ -19,7 +19,8 @@ const useAxios = ({ basurl, params }) => {
         .get(basurl, {
           params: params,
           headers: {
-            Authorization: "Bearer " + localStorage.getItem("movewebusertoken"),
+            Authorization:
+              "Bearer " + localStorage.getItem("pizzaorderingtoken"),
           },
         })
         .then((res) => {

@@ -206,36 +206,65 @@ export default function NavBar() {
           </>
         ) : (
           <>
-            <Link
-              // type="submit"
-              to="/register"
+            <Box
               sx={{
-                textDecoration: "none",
+                gap: 1,
                 justifyContent: "center",
                 alignItems: "center",
-                bgcolor: "#FF890F",
-                borderRadius: 2,
-                cursor: "pointer",
                 display: {
                   xs: "none",
                   md: "flex",
                 },
-                px: 5,
-                "&:hover": {
-                  bgcolor: "#e6891d",
-                },
               }}
             >
-              <Typography
-                color="#ffffff"
-                fontWeight={"bold"}
-                sx={{
-                  fontSize: "18px",
-                }}
-              >
-                Register
-              </Typography>
-            </Link>
+              <Link to="/register">
+                <Box
+                  sx={{
+                    bgcolor: "#FF890F",
+                    borderRadius: 2,
+                    px: 5,
+                    py: 1,
+                    "&:hover": {
+                      bgcolor: "#e6891d",
+                    },
+                  }}
+                >
+                  <Typography
+                    color="#ffffff"
+                    fontWeight={"bold"}
+                    sx={{
+                      fontSize: "18px",
+                    }}
+                  >
+                    Register
+                  </Typography>
+                </Box>
+              </Link>
+              <Link to="/login">
+                <Box
+                  sx={{
+                    bgcolor: "#FF890F",
+                    borderRadius: 2,
+
+                    px: 5,
+                    py: 1,
+                    "&:hover": {
+                      bgcolor: "#e6891d",
+                    },
+                  }}
+                >
+                  <Typography
+                    color="#ffffff"
+                    fontWeight={"bold"}
+                    sx={{
+                      fontSize: "18px",
+                    }}
+                  >
+                    login
+                  </Typography>
+                </Box>
+              </Link>
+            </Box>
           </>
         )}
 
