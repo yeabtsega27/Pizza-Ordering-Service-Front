@@ -25,6 +25,7 @@ export default function OrderPage() {
   const [price, setPrice] = useState(0);
   const [showSuccess, setShowSuccess] = useState(false);
   const [selectedToppings, setSelectedToppings] = useState([]);
+  const [popularPizzas, setPopularPizzas] = useState([]);
   const { error } = UseToast();
   const { Auth } = useAuth();
   const navigate = useNavigate();
@@ -49,6 +50,7 @@ export default function OrderPage() {
         }
       } catch (error) {
         console.log(error);
+        console.log(error.response.data.msg);
         error(error.response.data.msg)();
       }
     } else {
@@ -95,6 +97,15 @@ export default function OrderPage() {
         console.log(error);
       }
     };
+    const fetchPopularPizzas = async () => {
+      try {
+        const res = await instance.get(`pizza`);
+        setPopularPizzas(res.data.pizza); // Set fetched permissions to state
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchPopularPizzas();
     feactPizza();
   }, [id]);
 
@@ -442,11 +453,9 @@ export default function OrderPage() {
               },
             }}
           >
-            <RelatedPizzasComponent />
-            <RelatedPizzasComponent />
-            <RelatedPizzasComponent />
-            <RelatedPizzasComponent />
-            <RelatedPizzasComponent />
+            {popularPizzas?.map((pizza) => {
+              return <RelatedPizzasComponent key={pizza.id} pizza={pizza} />;
+            })}
           </Box>
         </Box>
       </Box>

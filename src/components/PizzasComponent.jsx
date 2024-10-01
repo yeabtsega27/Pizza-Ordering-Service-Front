@@ -1,5 +1,5 @@
-import { Avatar, Box, Button, Grid, Link, Typography } from "@mui/material";
-
+import { Avatar, Box, Button, Grid, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import ShowBirr from "./ShowBirr";
 import PropTypes from "prop-types";
 import { IMAGEBASEURL } from "../config/config";
@@ -60,7 +60,7 @@ export default function PizzasComponent({ pizza }) {
           <ShowBirr price={pizza?.price} />
 
           {/* Order Button */}
-          <Link href={`/order/${pizza.id}`}>
+          <Link to={`/order/${pizza.id}`}>
             <Button
               variant="contained"
               sx={{

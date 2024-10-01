@@ -1,7 +1,7 @@
 import RestaurantOutlinedIcon from "@mui/icons-material/RestaurantOutlined";
 import { Avatar, Box, Typography } from "@mui/material";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
 import pizzaLogo from "../assets/pizzaLogo.png";
 import Footer from "../components/Footer";
 import useAuth from "../hooks/useAuth";
@@ -59,7 +59,7 @@ export default function NavBar() {
             },
           }}
         >
-          <Link href="/" sx={{ textDecoration: "none" }}>
+          <Link to="/" sx={{ textDecoration: "none" }}>
             <Typography
               color={pathname.split("/")[1] == "" ? "#FF8100" : "#000000"}
               fontSize={pathname.split("/")[1] == "" ? 26 : 22}
@@ -69,7 +69,7 @@ export default function NavBar() {
             </Typography>
           </Link>
 
-          <Link href="/orders" sx={{ textDecoration: "none" }}>
+          <Link to="/orders" sx={{ textDecoration: "none" }}>
             <Typography
               color={pathname.split("/")[1] == "orders" ? "#FF8100" : "#000000"}
               fontSize={pathname.split("/")[1] == "orders" ? 26 : 22}
@@ -78,7 +78,7 @@ export default function NavBar() {
               Orders
             </Typography>
           </Link>
-          <Link href="/about" sx={{ textDecoration: "none" }}>
+          <Link to="/" sx={{ textDecoration: "none" }}>
             <Typography
               color={pathname.split("/")[1] == "about" ? "#FF8100" : "#000000"}
               fontSize={pathname.split("/")[1] == "about" ? 26 : 22}
@@ -150,7 +150,7 @@ export default function NavBar() {
             ) : (
               <>
                 <Link
-                  href="/restaurant"
+                  to="/restaurant"
                   sx={{
                     display: {
                       xs: "none",
@@ -208,7 +208,7 @@ export default function NavBar() {
           <>
             <Link
               // type="submit"
-              href="/register"
+              to="/register"
               sx={{
                 textDecoration: "none",
                 justifyContent: "center",

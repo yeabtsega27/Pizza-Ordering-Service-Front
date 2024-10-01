@@ -46,7 +46,7 @@ export default function DropDownMenu() {
         }}
       >
         <Link
-          href="/"
+          to="/"
           sx={{
             textDecoration: "none",
           }}
@@ -94,7 +94,7 @@ export default function DropDownMenu() {
           </Box>
         </Link>
         <Link
-          href="/orders"
+          to="/orders"
           sx={{
             textDecoration: "none",
           }}
@@ -141,12 +141,7 @@ export default function DropDownMenu() {
             </Typography>
           </Box>
         </Link>
-        <Link
-          href="/about"
-          sx={{
-            textDecoration: "none",
-          }}
-        >
+        <Link to="/">
           <Box
             sx={{
               ":hover": {
@@ -278,7 +273,7 @@ export default function DropDownMenu() {
             ) : (
               <>
                 <Link
-                  href="/restaurant"
+                  to="/restaurant"
                   sx={{
                     display: {
                       xs: "flex",
@@ -343,7 +338,7 @@ export default function DropDownMenu() {
           <>
             <Link
               // type="submit"
-              href="/register"
+              to="/register"
               sx={{
                 textDecoration: "none",
                 justifyContent: "center",

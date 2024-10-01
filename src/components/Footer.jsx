@@ -37,18 +37,18 @@ export default function Footer() {
             },
           }}
         >
-          <Link href="/home" sx={{ textDecoration: "none" }}>
+          <Link to="/home" sx={{ textDecoration: "none" }}>
             <Typography color="#16120DBF" fontSize={22} fontWeight="bold">
               Home
             </Typography>
           </Link>
 
-          <Link href="/orders" sx={{ textDecoration: "none" }}>
+          <Link to="/orders" sx={{ textDecoration: "none" }}>
             <Typography color="#16120DBF" fontSize={22} fontWeight={"bold"}>
               Order
             </Typography>
           </Link>
-          <Link href="/about" sx={{ textDecoration: "none" }}>
+          <Link to="/" sx={{ textDecoration: "none" }}>
             <Typography color="#16120DBF" fontSize={22} fontWeight={"bold"}>
               About
             </Typography>

@@ -1,7 +1,7 @@
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useForm } from "react-hook-form";
@@ -228,7 +228,7 @@ export default function RegistrationPage() {
             >
               <Typography>
                 {"Already have an account?"}
-                <Link href="/login" variant="body2">
+                <Link to="/login" variant="body2">
                   {"Login"}
                 </Link>
               </Typography>

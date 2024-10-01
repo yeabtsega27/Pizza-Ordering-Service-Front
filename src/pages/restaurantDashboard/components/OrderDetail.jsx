@@ -111,7 +111,7 @@ export default function OrderDetail({ setShow, data }) {
               Topping:
             </Typography>
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-              {data.Pizza?.Toppings.map((topping, index) => (
+              {data?.Toppings.map((topping, index) => (
                 <Chip
                   key={index}
                   label={topping.name}

@@ -13,7 +13,7 @@ export default function PizzaLogo() {
         mb: 4,
       }}
     >
-      <Link href="/" variant="body">
+      <Link to="/" variant="body">
         <Avatar
           sx={{
             width: 56,

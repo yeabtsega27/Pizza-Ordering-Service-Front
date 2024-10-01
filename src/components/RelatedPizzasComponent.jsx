@@ -1,7 +1,9 @@
 import { Avatar, Box, Grid, Typography } from "@mui/material";
 
-import PizaImage from "../assets/PizzaImage.png";
-export default function RelatedPizzasComponent() {
+import PropTypes from "prop-types";
+import { IMAGEBASEURL } from "../config/config";
+import { Link } from "react-router-dom";
+export default function RelatedPizzasComponent({ pizza }) {
   return (
     <Grid item xs={12} md={6} lg={4}>
       <Box
@@ -28,28 +30,33 @@ export default function RelatedPizzasComponent() {
           }}
         >
           <Avatar
-            src={PizaImage}
+            src={`${IMAGEBASEURL}${pizza?.image}`}
             sx={{
               width: "272px",
               height: "272px",
             }}
           ></Avatar>
         </Box>
-        <Typography
-          fontSize={"25px"}
-          fontWeight={800}
-          sx={{ textAlign: "center" }}
-        >
-          Margherita
-        </Typography>
+        <Link to={`/order/${pizza.id}`}>
+          <Typography
+            fontSize={"25px"}
+            fontWeight={800}
+            sx={{ textAlign: "center" }}
+          >
+            {pizza?.name}
+          </Typography>
+        </Link>
         <Typography
           fontSize={"15px"}
           fontWeight={400}
           sx={{ textAlign: "center" }}
         >
-          Tomato, Mozzarella, Bell Peppers, Onions, Olives
+          {pizza?.Toppings?.map((topping) => topping.name).join(",")}
         </Typography>
       </Box>
     </Grid>
   );
 }
+RelatedPizzasComponent.propTypes = {
+  pizza: PropTypes.object.isRequired, // 'to' must be a string and is required (URL path)
+};
