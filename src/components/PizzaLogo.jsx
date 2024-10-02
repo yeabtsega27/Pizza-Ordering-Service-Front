@@ -1,5 +1,6 @@
-import { Avatar, Box, Link, Typography } from "@mui/material";
+import { Avatar, Box, Typography } from "@mui/material";
 import pizzaLogo from "../assets/pizzaLogo.png";
+import { Link } from "react-router-dom";
 
 export default function PizzaLogo() {
   return (

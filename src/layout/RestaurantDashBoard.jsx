@@ -11,20 +11,67 @@ import { Menu as MenuIcon } from "@mui/icons-material";
 import DashboardNavbar from "./component/DashboardNavbar";
 import MenuOpenOutlinedIcon from "@mui/icons-material/MenuOpenOutlined";
 import SideBarItem from "./component/SideBarItem";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import BackpackOutlinedIcon from "@mui/icons-material/BackpackOutlined";
 import LocalPizzaOutlinedIcon from "@mui/icons-material/LocalPizzaOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import DashboardCustomizeOutlined from "@mui/icons-material/DashboardCustomizeOutlined";
+import Settings from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import useAuth from "../hooks/useAuth";
-import { instance } from "../lib/axioxFatch";
+import AxioxFatch from "../lib/axioxFatch";
 import { IMAGEBASEURL } from "../config/config";
 
+const menulist = [
+  {
+    icon: DashboardCustomizeOutlined,
+    label: "Dashboard",
+    to: "",
+    object: "Dashboard",
+  },
+  {
+    icon: BackpackOutlinedIcon,
+    label: "Order",
+    to: "order",
+    object: "Orders",
+  },
+
+  {
+    icon: PersonOutlineOutlinedIcon,
+    label: "Roles",
+    to: "roles",
+    object: "Roles",
+  },
+  {
+    icon: AccountCircleOutlinedIcon,
+    label: "Users",
+    to: "users",
+    object: "restaurant_manager",
+  },
+  {
+    icon: LocalPizzaOutlinedIcon,
+    label: "Pizza Menu",
+    to: "pizza-menu",
+    object: "Pizza",
+  },
+  {
+    icon: Settings,
+    label: "Restaurant Setting",
+    to: "setting",
+    object: "Restaurant",
+  },
+];
+
 export default function RestaurantDashBoard() {
+  const { instance } = AxioxFatch();
+  const location = useLocation();
+  const { pathname } = location;
+
   const navigate = useNavigate();
-  const { removeAuth, Auth } = useAuth();
+  const { removeAuth, Auth, abilities } = useAuth();
   const [restaurantInfo, setRestaurantInfo] = useState();
+  const [menuItems, setMenuItems] = useState([]);
 
   useEffect(() => {
     const fetchToppings = async () => {
@@ -41,16 +88,10 @@ export default function RestaurantDashBoard() {
     if (Auth.isAuthenticated) {
       fetchToppings();
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Auth]);
 
-  const menuItems = [
-    // { icon: SpaceDashboardOutlinedIcon, label: "Dashboard", to: "" },
-
-    { icon: BackpackOutlinedIcon, label: "Order", to: "order" },
-    { icon: PersonOutlineOutlinedIcon, label: "Roles", to: "roles" },
-    { icon: AccountCircleOutlinedIcon, label: "Users", to: "users" },
-    { icon: LocalPizzaOutlinedIcon, label: "Pizza Menu", to: "pizza-menu" },
-  ];
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md")); // Detect small screen sizes
   const [isOpen, setIsOpen] = useState(!isMobile); // Sidebar starts open on larger screens
@@ -66,6 +107,24 @@ export default function RestaurantDashBoard() {
       setIsOpen(true);
     }
   }, [isMobile]);
+
+  useEffect(() => {
+    if (menuItems.length === 0) {
+      menulist.forEach((i) => {
+        if (abilities?.can("read", i.object)) {
+          setMenuItems((prev) => [...prev, i]);
+        }
+      });
+    }
+  }, [abilities, menuItems.length, navigate, pathname]);
+  useEffect(() => {
+    var curentPathe = pathname.split("/")[2] ?? "";
+    const index = menuItems.findIndex((item) => curentPathe == item.to);
+
+    if (index === -1 && menuItems.length > 0) {
+      navigate(menuItems[0].to);
+    }
+  }, [menuItems, navigate, pathname]);
 
   return (
     <Box sx={{ display: "flex", overflow: "hidden" }}>

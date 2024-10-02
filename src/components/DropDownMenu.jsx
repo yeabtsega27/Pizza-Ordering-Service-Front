@@ -41,7 +41,7 @@ export default function DropDownMenu() {
           minWidth: "200px",
           //   width: "300px",
           zIndex: 10,
-          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", // Shadow added here
+          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
           py: 2,
         }}
       >

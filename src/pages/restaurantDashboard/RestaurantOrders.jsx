@@ -68,8 +68,6 @@ export default function RestaurantOrders() {
       accessorKey: "Pizza.name", //access nested data with dot notation
       header: "Name",
       Cell: ({ row }) => {
-        console.log(row.original);
-
         return (
           <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
             <Avatar
@@ -84,7 +82,7 @@ export default function RestaurantOrders() {
       },
     },
     {
-      accessorKey: "Pizza.Toppings", //access nested data with dot notation
+      accessorKey: "Toppings", //access nested data with dot notation
       header: "Topping",
       Cell: ({ row }) => {
         return (

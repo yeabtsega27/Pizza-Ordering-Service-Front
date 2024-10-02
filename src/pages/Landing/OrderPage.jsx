@@ -13,12 +13,13 @@ import ArrowOutwardTwoToneIcon from "@mui/icons-material/ArrowOutwardTwoTone";
 import RelatedPizzasComponent from "../../components/RelatedPizzasComponent";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { instance } from "../../lib/axioxFatch";
+import AxioxFatch from "../../lib/axioxFatch";
 import { IMAGEBASEURL } from "../../config/config";
 import UseToast from "../../hooks/UseToast";
 import useAuth from "../../hooks/useAuth";
 import PopUpSuccess from "../../components/PopUpSuccess";
 export default function OrderPage() {
+  const { instance } = AxioxFatch();
   const { id } = useParams();
   const [pizza, setPizza] = useState();
   const [amount, setAmount] = useState(1);

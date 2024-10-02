@@ -29,8 +29,6 @@ export default function RestaurantPizzaMenu() {
       accessorKey: "image", //access nested data with dot notation
       header: "image",
       Cell: ({ row }) => {
-        console.log(row.original.image);
-
         return (
           <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
             <Avatar

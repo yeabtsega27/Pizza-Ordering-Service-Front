@@ -10,12 +10,13 @@ import pizzaLogo from "../../assets/pizzaLogo.png";
 import { registrationSchema } from "./Schema/index"; // Update with your actual path
 import { Checkbox, FormControlLabel } from "@mui/material";
 import PizzaLogo from "../../components/PizzaLogo";
-import { instance } from "../../lib/axioxFatch";
+import AxioxFatch from "../../lib/axioxFatch";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import UseToast from "../../hooks/UseToast";
 
 export default function RegistrationPage() {
+  const { instance } = AxioxFatch();
   const { setAuth } = useAuth();
   const navigate = useNavigate();
 

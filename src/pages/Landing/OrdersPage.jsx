@@ -2,10 +2,11 @@ import { Box, Grid, Typography } from "@mui/material";
 import OrdersComponent from "../../components/OrdersComponent";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import { instance } from "../../lib/axioxFatch";
+import AxioxFatch from "../../lib/axioxFatch";
 import { useNavigate } from "react-router-dom";
 
 export default function OrdersPage() {
+  const { instance } = AxioxFatch();
   const [orders, setOrders] = useState([]);
 
   const { Auth } = useAuth();

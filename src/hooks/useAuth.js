@@ -10,6 +10,15 @@ const useAuth = () => {
   const [abilities, setAbilities] = useState(null);
 
   useEffect(() => {
+    if (Auth.isAuthenticated) {
+      const ability = defineAbilitiesFor(Auth.user);
+      setAbilities(ability);
+    } else {
+      setAbilities(null);
+    }
+  }, [Auth.isAuthenticated, Auth.user]);
+
+  useEffect(() => {
     if (
       localStorage.getItem("pizzaorderingtoken") === null ||
       localStorage.getItem("pizzaorderingtoken") === undefined
@@ -23,8 +32,6 @@ const useAuth = () => {
         dispatch(logout());
       } else {
         const user = JSON.parse(localStorage.getItem("pizzaorderinguser"));
-        const ability = defineAbilitiesFor(user);
-        setAbilities(ability);
 
         dispatch(login({ user: user }));
       }
@@ -36,6 +43,7 @@ const useAuth = () => {
     dispatch(login({ user: user }));
     localStorage.setItem("pizzaorderingtoken", token);
     localStorage.setItem("pizzaorderinguser", JSON.stringify(user));
+
     setLoading(false);
   };
 

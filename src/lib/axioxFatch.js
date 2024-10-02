@@ -22,8 +22,6 @@ const AxioxFatch = () => {
   const [token, setToken] = useState(
     localStorage.getItem("pizzaorderingtoken")
   );
-  console.log({ Auth });
-  console.log({ token: localStorage.getItem("pizzaorderingtoken") });
 
   const instance = axios.create({
     baseURL: baseURL, // Set the base URL for the requests

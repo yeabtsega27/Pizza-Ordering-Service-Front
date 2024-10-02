@@ -11,11 +11,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import pizzaLogo from "../../assets/pizzaLogo.png";
 import { loginSchema } from "./Schema/index";
 import PizzaLogo from "../../components/PizzaLogo";
-import { instance } from "../../lib/axioxFatch";
+import AxioxFatch from "../../lib/axioxFatch";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
+  const { instance } = AxioxFatch();
   const { setAuth } = useAuth();
   const navigate = useNavigate(); // Initialize useNavigate
   const {

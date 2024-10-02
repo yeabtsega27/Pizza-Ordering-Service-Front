@@ -7,7 +7,7 @@ export default function SideBarItem({ label, to, Icon }) {
   const { pathname } = location;
   const isActive =
     pathname.split("/")[2] === to.split("/")[0] ||
-    (pathname.split("/")[2] === undefined && to.split("/")[0] == "order");
+    (pathname.split("/")[2] === undefined && to.split("/")[0] == "");
 
   return (
     <Link

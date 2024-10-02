@@ -51,14 +51,17 @@ export const pizzaSchema = z.object({
     }), // Image validation (valid type and file size)
 });
 export const editePizzaSchema = z.object({
-  name: z.string().nonempty({ message: "Name is required" }), // Non-empty string validation for name
+  name: z.string().nonempty({ message: "Name is required" }),
   price: z
     .string()
-    .regex(/^\d+$/, { message: "Price must be a valid number" }) // Ensure the price is a numeric string
+    .regex(/^\d+$/, { message: "Price must be a valid number" })
     .refine((value) => parseInt(value, 10) >= 1, {
       message: "Price must be at least 1",
-    }), // Ensure price is at least 1
+    }),
   image: z.any().optional(),
-
-  // Image validation (valid type and file size)
+});
+export const editeRestaurant = z.object({
+  name: z.string().nonempty({ message: "Name is required" }),
+  location: z.string(),
+  logo: z.any().optional(),
 });
