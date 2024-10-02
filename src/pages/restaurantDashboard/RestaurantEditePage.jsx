@@ -61,7 +61,7 @@ export default function RestaurantEditePage() {
         },
       });
       if (res.status == 200) {
-        success("you have successfully update restorant information")();
+        success("you have successfully update restaurant information")();
       }
     } catch (e) {
       console.error(e);

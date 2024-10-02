@@ -149,8 +149,7 @@ export default function NavBar() {
               </>
             ) : (
               <>
-                <Link
-                  to="/restaurant"
+                <Box
                   sx={{
                     display: {
                       xs: "none",
@@ -163,44 +162,46 @@ export default function NavBar() {
                     cursor: "pointer",
                   }}
                 >
-                  <Box
-                    sx={{
-                      top: "40%",
-                      width: "4px",
-                      height: "30px",
-                      borderRadius: 1,
-                    }}
-                  ></Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      color: "#FF8100",
-                      gap: 1,
-                    }}
-                  >
-                    <RestaurantOutlinedIcon
+                  <Link to="/restaurant">
+                    <Box
                       sx={{
-                        fontSize: "30px",
-                        color:
+                        top: "40%",
+                        width: "4px",
+                        height: "30px",
+                        borderRadius: 1,
+                      }}
+                    ></Box>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        color: "#FF8100",
+                        gap: 1,
+                      }}
+                    >
+                      <RestaurantOutlinedIcon
+                        sx={{
+                          fontSize: "30px",
+                          color:
+                            pathname.split("/")[1] == "profile "
+                              ? "#FF8100"
+                              : "#000000",
+                        }}
+                      />
+                      <Typography
+                        color={
                           pathname.split("/")[1] == "profile "
                             ? "#FF8100"
-                            : "#000000",
-                      }}
-                    />
-                    <Typography
-                      color={
-                        pathname.split("/")[1] == "profile "
-                          ? "#FF8100"
-                          : "#000000"
-                      }
-                      fontSize={26}
-                      fontWeight="bold"
-                    >
-                      Restorant
-                    </Typography>
-                  </Box>
-                </Link>
+                            : "#000000"
+                        }
+                        fontSize={26}
+                        fontWeight="bold"
+                      >
+                        Restorant
+                      </Typography>
+                    </Box>
+                  </Link>
+                </Box>
               </>
             )}
           </>

@@ -2,10 +2,11 @@ import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 
-const baseURL = "http://localhost:4000/api/v1/";
+const baseURL = import.meta.env.VITE_BASEURL ?? "http://localhost:4000/api/v1/";
 // const baseURL = "https://pizza-ordering-service-back.onrender.com/api/v1/";
 
 // Create an instance of Axios
+console.log(baseURL);
 
 export const instance = axios.create({
   baseURL: baseURL, // Set the base URL for the requests

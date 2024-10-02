@@ -15,6 +15,7 @@ import RestaurantAddPizza from "./pages/restaurantDashboard/RestaurantAddPizza";
 import useAuth from "./hooks/useAuth";
 import RestaurantDashboardPage from "./pages/restaurantDashboard/RestaurantDashboardPage";
 import RestaurantEditePage from "./pages/restaurantDashboard/RestaurantEditePage";
+import.meta.env;
 
 function App() {
   const { Auth, abilities } = useAuth();
