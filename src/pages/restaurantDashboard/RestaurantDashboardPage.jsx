@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Grid, Typography, Box } from "@mui/material";
 import { MaterialReactTable } from "material-react-table";
-import useAxios from "../../hooks/useAxios";
 import { IMAGEBASEURL } from "../../config/config";
+import useAxios from "../../hooks/useAxios";
 import { Link } from "react-router-dom";
 const cardStyle = {
   bgcolor: "#ffffff",
@@ -144,7 +144,7 @@ export default function RestaurantDashboardPage() {
           </Typography>
           <MaterialReactTable
             columns={topSellingPizzasColumns}
-            data={data?.topSellingPizzas}
+            data={data?.topSellingPizzas ?? []}
             enableToolbarTop={false} // hides the top toolbar
             enableToolbarBottom={false} // hides the bottom toolbar
             enableKeyboardShortcuts={false}
@@ -166,7 +166,7 @@ export default function RestaurantDashboardPage() {
           </Link>
           <MaterialReactTable
             columns={recentOrdersColumns}
-            data={data?.recentOrders}
+            data={data?.recentOrders ?? []}
             enableToolbarTop={false} // hides the top toolbar
             enableToolbarBottom={false} // hides the bottom toolbar
             enableKeyboardShortcuts={false}

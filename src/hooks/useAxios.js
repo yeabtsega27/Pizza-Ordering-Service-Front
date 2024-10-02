@@ -29,7 +29,7 @@ const useAxios = ({ basurl, params }) => {
         }
       } catch (err) {
         console.log(err);
-        error(err.response.data.msg)();
+        error(err.response.data?.msg ?? "error")();
         setLoading(false);
       }
     };
