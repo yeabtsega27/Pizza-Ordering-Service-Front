@@ -111,8 +111,8 @@ export default function RestaurantDashboardPage() {
         </Grid>
         <Grid item xs={12} md={3}>
           <Box sx={{ ...cardStyle }}>
-            <Typography variant="h6">Total Revenue</Typography>
-            <Typography variant="h4">${data?.totalRevenue}</Typography>
+            <Typography variant="h6">Pizza Ordered</Typography>
+            <Typography variant="h4">{data?.totalRevenue}</Typography>
           </Box>
         </Grid>
         <Grid item xs={12} md={3}>

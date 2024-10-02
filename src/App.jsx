@@ -15,6 +15,7 @@ import RestaurantAddPizza from "./pages/restaurantDashboard/RestaurantAddPizza";
 import useAuth from "./hooks/useAuth";
 import RestaurantDashboardPage from "./pages/restaurantDashboard/RestaurantDashboardPage";
 import RestaurantEditePage from "./pages/restaurantDashboard/RestaurantEditePage";
+import SearchPage from "./pages/Landing/SearchPage";
 import.meta.env;
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="/orders" element={<OrdersPage />} />
           <Route path="/order/:id" element={<OrderPage />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route path="/about" element={<>about page</>} />
           <Route path="*" element={<div>page not found</div>} />
         </Route>

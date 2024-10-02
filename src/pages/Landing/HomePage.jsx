@@ -8,11 +8,13 @@ import TopRestaurants from "../../components/TopRestaurants";
 import PizzasComponent from "../../components/PizzasComponent";
 import { useEffect, useState } from "react";
 import AxioxFatch from "../../lib/axioxFatch";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   const { instance } = AxioxFatch();
   const [restaurant, setRestaurant] = useState([]);
   const [popularPizzas, setPopularPizzas] = useState([]);
+  const [search, setSearch] = useState("");
   const [fasting, setFasting] = useState([]);
 
   useEffect(() => {
@@ -94,6 +96,9 @@ export default function HomePage() {
             <TextField
               fullWidth
               placeholder="Search"
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
               sx={{
                 "& .MuiOutlinedInput-root": {
                   border: "none",
@@ -120,21 +125,23 @@ export default function HomePage() {
               }}
             />
 
-            <Box
-              sx={{
-                background: "#FF890F",
-                width: "7vw",
-                height: "7vw",
-                borderRadius: 100,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                border: 5,
-                borderColor: "#ffffff",
-              }}
-            >
-              <SearchIcon sx={{ fontSize: "5vw", color: "#ffffff" }} />
-            </Box>
+            <Link to={`/search?search=${search}`}>
+              <Box
+                sx={{
+                  background: "#FF890F",
+                  width: "7vw",
+                  height: "7vw",
+                  borderRadius: 100,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  border: 5,
+                  borderColor: "#ffffff",
+                }}
+              >
+                <SearchIcon sx={{ fontSize: "5vw", color: "#ffffff" }} />
+              </Box>
+            </Link>
           </Box>
         </Box>
         <Box
