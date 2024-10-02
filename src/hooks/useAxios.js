@@ -15,25 +15,23 @@ const useAxios = ({ basurl, params }) => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      instance
-        .get(basurl, {
+      try {
+        const res = await instance.get(basurl, {
           params: params,
           headers: {
             Authorization:
               "Bearer " + localStorage.getItem("pizzaorderingtoken"),
           },
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            setData(res.data);
-            setLoading(false);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          error(err.response.data.msg)();
-          setLoading(false);
         });
+        if (res.status === 200) {
+          setData(res.data);
+          setLoading(false);
+        }
+      } catch (err) {
+        console.log(err);
+        error(err.response.data.msg)();
+        setLoading(false);
+      }
     };
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps

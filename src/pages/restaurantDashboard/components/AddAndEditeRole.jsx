@@ -34,6 +34,7 @@ export default function AddAndEditRole({ data, setShow, add = true, setData }) {
       setInitialPermissions(initialPermIds);
     }
     fetchPermissions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [add, data]);
 
   const {
