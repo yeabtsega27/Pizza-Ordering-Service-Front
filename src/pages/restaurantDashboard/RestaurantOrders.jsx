@@ -160,7 +160,7 @@ export default function RestaurantOrders() {
   ]);
   const table = useMaterialReactTable({
     columns,
-    data: data.orders ?? [], //data must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
+    data: data?.orders ?? [], //data must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
   });
   return (
     <>

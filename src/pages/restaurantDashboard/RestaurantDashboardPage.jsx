@@ -106,25 +106,25 @@ export default function RestaurantDashboardPage() {
         <Grid item xs={12} md={3}>
           <Box sx={{ ...cardStyle }}>
             <Typography variant="h6">Total Orders</Typography>
-            <Typography variant="h4">{data.totalOrders}</Typography>
+            <Typography variant="h4">{data?.totalOrders}</Typography>
           </Box>
         </Grid>
         <Grid item xs={12} md={3}>
           <Box sx={{ ...cardStyle }}>
             <Typography variant="h6">Total Revenue</Typography>
-            <Typography variant="h4">${data.totalRevenue}</Typography>
+            <Typography variant="h4">${data?.totalRevenue}</Typography>
           </Box>
         </Grid>
         <Grid item xs={12} md={3}>
           <Box sx={{ ...cardStyle }}>
             <Typography variant="h6">Users Who Ordered</Typography>
-            <Typography variant="h4">{data.usersWhoOrdered}</Typography>
+            <Typography variant="h4">{data?.usersWhoOrdered}</Typography>
           </Box>
         </Grid>
         <Grid item xs={12} md={3}>
           <Box sx={{ ...cardStyle }}>
             <Typography variant="h6">Active Pizzas</Typography>
-            <Typography variant="h4">{data.activePizzas}</Typography>
+            <Typography variant="h4">{data?.activePizzas}</Typography>
           </Box>
         </Grid>
       </Grid>
@@ -144,7 +144,7 @@ export default function RestaurantDashboardPage() {
           </Typography>
           <MaterialReactTable
             columns={topSellingPizzasColumns}
-            data={data.topSellingPizzas}
+            data={data?.topSellingPizzas}
             enableToolbarTop={false} // hides the top toolbar
             enableToolbarBottom={false} // hides the bottom toolbar
             enableKeyboardShortcuts={false}
@@ -166,7 +166,7 @@ export default function RestaurantDashboardPage() {
           </Link>
           <MaterialReactTable
             columns={recentOrdersColumns}
-            data={data.recentOrders}
+            data={data?.recentOrders}
             enableToolbarTop={false} // hides the top toolbar
             enableToolbarBottom={false} // hides the bottom toolbar
             enableKeyboardShortcuts={false}

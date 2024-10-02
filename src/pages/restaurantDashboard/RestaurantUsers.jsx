@@ -117,7 +117,7 @@ export default function RestaurantUsers() {
   ]);
   const table = useMaterialReactTable({
     columns,
-    data: data.users ?? [], //data must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
+    data: data?.users ?? [], //data must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
     renderTopToolbarCustomActions: () => {
       return (
         <Box sx={{ display: "flex", justifyContent: "flex-start", mb: 2 }}>
