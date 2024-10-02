@@ -7,9 +7,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import TopRestaurants from "../../components/TopRestaurants";
 import PizzasComponent from "../../components/PizzasComponent";
 import { useEffect, useState } from "react";
-import { instance } from "../../lib/axioxFatch";
+import AxioxFatch from "../../lib/axioxFatch";
 
 export default function HomePage() {
+  const { instance } = AxioxFatch();
   const [restaurant, setRestaurant] = useState([]);
   const [popularPizzas, setPopularPizzas] = useState([]);
   const [fasting, setFasting] = useState([]);

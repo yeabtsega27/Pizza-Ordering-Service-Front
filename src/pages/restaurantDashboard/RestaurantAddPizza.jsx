@@ -13,10 +13,11 @@ import { useForm } from "react-hook-form";
 import { editePizzaSchema, pizzaSchema } from "./Schema";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { instance } from "../../lib/axioxFatch";
+import AxioxFatch from "../../lib/axioxFatch";
 import UseToast from "../../hooks/UseToast";
 
 export default function RestaurantAddPizza() {
+  const { instance } = AxioxFatch();
   const [toppings, setTopping] = useState([]);
   const [pizza, setPizza] = useState({});
   const navigate = useNavigate();

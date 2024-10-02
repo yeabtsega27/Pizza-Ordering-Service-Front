@@ -13,10 +13,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { roleSchema } from "../Schema";
 import { useEffect, useState } from "react";
-import { instance } from "../../../lib/axioxFatch";
+import AxioxFatch from "../../../lib/axioxFatch";
 import UseToast from "../../../hooks/UseToast";
 
 export default function AddAndEditRole({ data, setShow, add = true, setData }) {
+  const { instance } = AxioxFatch();
   const [permissions, setPermissions] = useState([]);
   const [selectedPermissions, setSelectedPermissions] = useState([]);
   const [initialPermissions, setInitialPermissions] = useState([]);

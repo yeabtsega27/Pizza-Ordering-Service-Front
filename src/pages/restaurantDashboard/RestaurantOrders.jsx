@@ -13,7 +13,7 @@ import { Avatar, MenuItem, Select, Typography } from "@mui/material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown"; // Import the arrow down icon
 import OrderDetail from "./components/OrderDetail";
-import { instance } from "../../lib/axioxFatch";
+import AxioxFatch from "../../lib/axioxFatch";
 import UseToast from "../../hooks/UseToast";
 import { IMAGEBASEURL } from "../../config/config";
 
@@ -31,6 +31,7 @@ const getStatusStyle = (status) => {
 };
 
 export default function RestaurantOrders() {
+  const { instance } = AxioxFatch();
   const { data, loading, setData } = useAxios({ basurl: "orders/restaurant" });
   const [showOrderDetail, setShowOrderDetail] = useState(false);
   const [orderDetailData, setOrderDetailData] = useState(null);

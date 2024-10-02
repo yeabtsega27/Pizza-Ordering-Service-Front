@@ -1,11 +1,13 @@
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import HighlightOffSharpIcon from "@mui/icons-material/HighlightOffSharp";
-import { instance } from "../../../lib/axioxFatch";
+import AxioxFatch from "../../../lib/axioxFatch";
 import UseToast from "../../../hooks/UseToast";
 
 export default function DeleteUser({ setShow, data, setData }) {
   const { error } = UseToast();
+
+  const { instance } = AxioxFatch();
 
   const onsubmit = async () => {
     try {

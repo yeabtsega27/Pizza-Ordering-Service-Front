@@ -7,13 +7,14 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { editeRestaurant } from "./Schema/index"; // Update with your actual path
 import { useEffect, useState } from "react";
-import { instance } from "../../lib/axioxFatch";
+import AxioxFatch from "../../lib/axioxFatch";
 import UseToast from "../../hooks/UseToast";
 import useAuth from "../../hooks/useAuth";
 import { Avatar } from "@mui/material";
 import { IMAGEBASEURL } from "../../config/config";
 
 export default function RestaurantEditePage() {
+  const { instance } = AxioxFatch();
   const { error, success } = UseToast();
 
   const { Auth } = useAuth();
@@ -188,7 +189,6 @@ export default function RestaurantEditePage() {
           margin="normal"
           required
           fullWidth
-          label="Location"
           name="location"
           {...register("location")}
           error={!!errors.location}
